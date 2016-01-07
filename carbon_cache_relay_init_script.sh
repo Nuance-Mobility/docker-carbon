@@ -101,8 +101,8 @@ function replaceCarbonRelayDestinationsWithEtcHosts ( )
 	logInfo "calling replaceCarbonRelayDestinationsWithEtcHosts" 
 	
 	# read the list of carboncache links from the /etc/hosts, removing the lines wiht _1 at the end.
-	va_etchosts_carboncache_links=($(cat /etc/hosts | grep carboncache | awk {'print $2'} | grep -v '_1$'))
-	#TODO-test# va_etchosts_carboncache_links=($(cat etc_hosts/hosts.txt | grep carboncache | awk {'print $2'} | grep -v '_1$'))
+	va_etchosts_carboncache_links=($(cat /etc/hosts | awk {'print $2'} | grep ^carboncache | grep -v '_1$' | sort))
+	#TODO-test# va_etchosts_carboncache_links=($(cat etc_hosts/hosts.txt | awk {'print $2'} | grep ^carboncache | grep -v '_1$' | sort))
 
 	# create the new DESTINATIONS to be set in the carbon.conf file  based on the carboncache links found
 	# echo "number of elements ${#va_etchosts_carboncache_links[@]}"
