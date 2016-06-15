@@ -3,6 +3,8 @@ set -e
 
 # Remove previous pid if necessary
 rm -f /var/run/carbon*.pid
+chown -R _graphite:_graphite /etc/carbon
+chown -R _graphite:_graphite /var/lib/graphite/whisper
 
 if [ "$1" = 'cache' ]; then
 	chmod 777 /carbon_cache_relay_init_script.sh
