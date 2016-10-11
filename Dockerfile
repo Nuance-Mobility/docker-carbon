@@ -1,7 +1,6 @@
 FROM        nuancemobility/ubuntu-base:14.04
 MAINTAINER  Brice Argenson <brice.argenson@nuance.com>
 
-
 RUN         apt-get update -y && \
             apt-get install -y graphite-carbon && \
             echo "CARBON_CACHE_ENABLED=true" > /etc/default/graphite-carbon         
