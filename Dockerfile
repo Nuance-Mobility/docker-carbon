@@ -1,16 +1,16 @@
 FROM        nuancemobility/ubuntu-base:14.04
 MAINTAINER  Brice Argenson <brice.argenson@nuance.com>
 
-COPY        docker-entrypoint.sh /
-COPY        carbon_cache_relay_init_script.sh /
 
 RUN         apt-get update -y && \
-            apt-get install -y graphite-carbon=0.9.12-3 && \
+            apt-get install -y graphite-carbon && \
             echo "CARBON_CACHE_ENABLED=true" > /etc/default/graphite-carbon         
 
 VOLUME      /etc/carbon
 VOLUME      /var/lib/graphite/whisper
 
+COPY        docker-entrypoint.sh /
+COPY        carbon_cache_relay_init_script.sh /
 
 ENTRYPOINT  ["/docker-entrypoint.sh"]
 
