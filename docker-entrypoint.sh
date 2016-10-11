@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+#
 # Remove previous pid if necessary
 rm -f /var/run/carbon*.pid
 chown -R _graphite:_graphite /etc/carbon
